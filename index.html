@@ -8,452 +8,150 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
 :root {
-  --bg:       #0f1117;
-  --surface:  #16181f;
-  --surface2: #1c1f28;
-  --border:   rgba(255,255,255,0.07);
-  --border2:  rgba(255,255,255,0.12);
-  --text:     #e8eaf0;
-  --text2:    #8b90a0;
-  --text3:    #555a6e;
-  --accent:   #5b6af0;
-  --accent2:  #4a58e0;
-  --accent-bg: rgba(91,106,240,0.12);
-  --accent-border: rgba(91,106,240,0.3);
-  --green-bg: rgba(34,197,94,0.1);
-  --red-bg:   rgba(239,68,68,0.1);
-  --amber-bg: rgba(245,158,11,0.1);
-  --radius:   10px;
-  --radius-lg: 14px;
+  --bg:#0f1117;--surface:#16181f;--surface2:#1c1f28;
+  --border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.12);
+  --text:#e8eaf0;--text2:#8b90a0;--text3:#555a6e;
+  --accent:#5b6af0;--accent2:#4a58e0;
+  --accent-bg:rgba(91,106,240,0.12);--accent-border:rgba(91,106,240,0.3);
+  --green-bg:rgba(34,197,94,0.1);--red-bg:rgba(239,68,68,0.1);
+  --amber-bg:rgba(245,158,11,0.1);--radius:10px;--radius-lg:14px;
 }
-
-body {
-  font-family: 'Inter', -apple-system, sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  min-height: 100vh;
-  font-size: 14px;
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-}
-
-.page {
-  max-width: 660px;
-  margin: 0 auto;
-  padding: 52px 24px 80px;
-}
-
-.header { margin-bottom: 40px; }
-
-.logo-row {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 6px;
-}
-
-.logo-mark {
-  width: 36px; height: 36px;
-  background: var(--accent);
-  border-radius: 8px;
-  display: flex; align-items: center; justify-content: center;
-  font-weight: 600; font-size: 13px; color: #fff;
-  flex-shrink: 0;
-}
-
-.logo-text { font-size: 18px; font-weight: 600; letter-spacing: -0.3px; }
-
-.logo-badge {
-  background: var(--accent-bg);
-  border: 1px solid var(--accent-border);
-  color: #8b96f8;
-  font-size: 11px; font-weight: 500;
-  padding: 2px 8px; border-radius: 20px;
-}
-
-.header-sub {
-  font-size: 13px; color: var(--text2);
-  margin-left: 48px;
-}
-
-.tabs {
-  display: flex;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 4px; gap: 2px;
-  margin-bottom: 20px;
-}
-
-.tab {
-  flex: 1; padding: 8px 10px;
-  border-radius: 7px; border: none;
-  background: transparent; color: var(--text2);
-  font-family: inherit; font-size: 13px; font-weight: 500;
-  cursor: pointer; transition: all 0.15s; white-space: nowrap;
-}
-.tab:hover { color: var(--text); }
-.tab.active {
-  background: var(--surface2); color: var(--text);
-  border: 1px solid var(--border2);
-}
-
-.card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  padding: 24px; margin-bottom: 16px;
-}
-
-.card-title {
-  font-size: 11px; font-weight: 500; color: var(--text3);
-  text-transform: uppercase; letter-spacing: 0.6px;
-  margin-bottom: 16px;
-}
-
-.plan-card {
-  background: var(--surface2);
-  border: 1px solid var(--border2);
-  border-radius: var(--radius-lg);
-  padding: 24px; margin-bottom: 16px;
-  position: relative; overflow: hidden;
-}
-
-.plan-card::before {
-  content: '';
-  position: absolute; top: 0; left: 0; right: 0; height: 2px;
-  background: linear-gradient(90deg, var(--accent), #7c88f8);
-}
-
-.plan-header {
-  display: flex; align-items: flex-start;
-  justify-content: space-between; margin-bottom: 20px;
-}
-
-.plan-name { font-size: 16px; font-weight: 600; margin-bottom: 3px; }
-.plan-period { font-size: 12px; color: var(--text2); }
-
-.plan-price {
-  font-size: 28px; font-weight: 600; letter-spacing: -1px; line-height: 1; text-align: right;
-}
-.plan-price span { font-size: 15px; font-weight: 500; color: var(--text2); }
-.plan-renew { font-size: 11px; color: var(--text3); margin-top: 3px; text-align: right; }
-
-.plan-divider { height: 1px; background: var(--border); margin-bottom: 18px; }
-
-.feature-list {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 9px;
-}
-
-.feature-item {
-  display: flex; align-items: center; gap: 7px;
-  font-size: 12.5px; color: var(--text2);
-}
-
-.feature-dot {
-  width: 5px; height: 5px; border-radius: 50%;
-  background: var(--accent); flex-shrink: 0;
-}
-
-.methods { display: flex; gap: 8px; margin-bottom: 20px; }
-
-.method-btn {
-  flex: 1; border: 1px solid var(--border2);
-  background: var(--surface2); color: var(--text2);
-  padding: 10px 14px; cursor: pointer;
-  font-family: inherit; font-size: 13px; font-weight: 500;
-  border-radius: var(--radius); transition: all 0.15s;
-  display: flex; align-items: center; justify-content: center; gap: 7px;
-}
-.method-btn:hover { color: var(--text); background: var(--surface); }
-.method-btn.active {
-  border-color: var(--accent-border);
-  background: var(--accent-bg); color: #8b96f8;
-}
-
-.field { margin-bottom: 14px; }
-.field label { display: block; font-size: 12px; font-weight: 500; color: var(--text2); margin-bottom: 6px; }
-.field input, .field select {
-  width: 100%; background: var(--surface2);
-  border: 1px solid var(--border2); color: var(--text);
-  padding: 10px 13px; font-family: inherit; font-size: 13px;
-  border-radius: var(--radius); outline: none; transition: border-color 0.15s;
-}
-.field input:focus, .field select:focus { border-color: var(--accent); }
-.field input::placeholder { color: var(--text3); }
-
-.pix-box {
-  background: var(--surface2); border: 1px solid var(--border2);
-  border-radius: var(--radius); padding: 18px;
-  margin-bottom: 14px; text-align: center;
-}
-.pix-label { font-size: 11px; font-weight: 500; color: var(--text3); text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 8px; }
-.pix-amount { font-size: 26px; font-weight: 600; letter-spacing: -0.5px; margin-bottom: 10px; }
-.pix-key-display {
-  background: var(--bg); border: 1px solid var(--border);
-  border-radius: 7px; padding: 9px 14px;
-  font-size: 13px; color: #8b96f8; font-weight: 500;
-  word-break: break-all; margin-bottom: 10px;
-}
-.pix-note { font-size: 12px; color: var(--text2); }
-
-.btn {
-  width: 100%; padding: 11px 18px; border-radius: var(--radius);
-  border: none; font-family: inherit; font-size: 13px; font-weight: 500;
-  cursor: pointer; transition: all 0.15s;
-  display: flex; align-items: center; justify-content: center; gap: 7px;
-}
-.btn-primary { background: var(--accent); color: #fff; }
-.btn-primary:hover { background: var(--accent2); }
-.btn-primary:active { transform: scale(0.99); }
-.btn-primary:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
-.btn-danger { background: rgba(239,68,68,0.15); color: #f87171; border: 1px solid rgba(239,68,68,0.25); }
-.btn-danger:hover { background: rgba(239,68,68,0.25); }
-.btn-sm { width: auto; padding: 6px 12px; font-size: 12px; }
-
-.alert {
-  padding: 11px 14px; border-radius: var(--radius);
-  font-size: 12.5px; margin-top: 12px; display: none; line-height: 1.5;
-}
-.alert.show { display: block; }
-.alert-success { background: var(--green-bg); color: #4ade80; border: 1px solid rgba(34,197,94,0.2); }
-.alert-error   { background: var(--red-bg);   color: #f87171; border: 1px solid rgba(239,68,68,0.2); }
-.alert-info    { background: var(--accent-bg); color: #8b96f8; border: 1px solid var(--accent-border); }
-.alert-warning { background: var(--amber-bg);  color: #fbbf24; border: 1px solid rgba(245,158,11,0.2); }
-
-.notice {
-  display: flex; gap: 10px; padding: 12px 14px;
-  background: rgba(245,158,11,0.08);
-  border: 1px solid rgba(245,158,11,0.15);
-  border-radius: var(--radius);
-  font-size: 12.5px; color: #fbbf24;
-  margin-bottom: 0; line-height: 1.5;
-}
-.notice-icon { flex-shrink: 0; margin-top: 2px; }
-
-.contact-btns { display: flex; gap: 8px; margin-bottom: 14px; }
-.contact-btn {
-  flex: 1; padding: 10px 14px; border-radius: var(--radius);
-  border: 1px solid var(--border2); background: var(--surface2);
-  color: var(--text2); font-family: inherit; font-size: 13px; font-weight: 500;
-  cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 7px;
-  text-decoration: none; transition: all 0.15s;
-}
-.contact-btn:hover { color: var(--text); border-color: var(--accent-border); }
-.contact-btn.wpp { border-color: rgba(37,211,102,0.3); color: #22c55e; }
-.contact-btn.wpp:hover { background: rgba(37,211,102,0.1); }
-.contact-btn.discord { border-color: rgba(88,101,242,0.3); color: #818cf8; }
-.contact-btn.discord:hover { background: rgba(88,101,242,0.1); }
-
-.script-reveal {
-  background: var(--surface2); border: 1px solid var(--border2);
-  border-radius: var(--radius-lg); padding: 20px; margin-top: 16px;
-}
-.script-reveal-title { font-size: 12px; font-weight: 500; color: var(--text2); margin-bottom: 14px; }
-
-.bookmarklet-btn {
-  display: block; width: 100%; padding: 12px;
-  background: linear-gradient(135deg, var(--accent), #7c88f8);
-  color: #fff; text-align: center; text-decoration: none;
-  border-radius: var(--radius); font-size: 13px; font-weight: 500;
-  margin-bottom: 12px; cursor: grab; transition: opacity 0.15s;
-}
-.bookmarklet-btn:hover { opacity: 0.9; }
-
-.copy-row { display: flex; gap: 8px; margin-bottom: 12px; }
-.copy-row input {
-  flex: 1; background: var(--bg); border: 1px solid var(--border);
-  color: var(--text2); padding: 8px 12px;
-  font-family: 'SF Mono', monospace; font-size: 11px;
-  border-radius: 7px; outline: none;
-}
-.copy-row button {
-  padding: 8px 14px; background: var(--surface);
-  border: 1px solid var(--border2); color: var(--text2);
-  font-family: inherit; font-size: 12px; border-radius: 7px;
-  cursor: pointer; white-space: nowrap; transition: all 0.15s;
-}
-.copy-row button:hover { color: var(--text); border-color: var(--accent-border); }
-
-.steps { list-style: none; }
-.step-item {
-  display: flex; gap: 14px; padding: 14px 0;
-  border-bottom: 1px solid var(--border);
-}
-.step-item:last-child { border-bottom: none; padding-bottom: 0; }
-
-.step-num {
-  width: 24px; height: 24px; border-radius: 50%;
-  background: var(--accent-bg); border: 1px solid var(--accent-border);
-  color: #8b96f8; font-size: 11px; font-weight: 600;
-  display: flex; align-items: center; justify-content: center;
-  flex-shrink: 0; margin-top: 1px;
-}
-
-.step-text { font-size: 13px; color: var(--text2); line-height: 1.6; }
-.step-text b { color: var(--text); font-weight: 500; }
-
-.section-title { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 12px; }
-
-.features-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-.feat {
-  background: var(--surface); border: 1px solid var(--border);
-  border-radius: var(--radius); padding: 14px;
-}
-.feat-icon { font-size: 16px; margin-bottom: 7px; display: block; }
-.feat-title { font-size: 12.5px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
-.feat-desc { font-size: 11.5px; color: var(--text2); line-height: 1.5; }
-
-/* ADMIN */
-.admin-gate {
-  background: var(--surface); border: 1px solid var(--border);
-  border-radius: var(--radius-lg); padding: 28px; text-align: center;
-}
-.admin-lock { font-size: 32px; margin-bottom: 12px; display: block; }
-.admin-title { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
-.admin-sub { font-size: 12px; color: var(--text2); margin-bottom: 20px; }
-
-.keys-table { width: 100%; border-collapse: collapse; margin-bottom: 16px; }
-.keys-table th {
-  text-align: left; font-size: 11px; font-weight: 500;
-  color: var(--text3); text-transform: uppercase; letter-spacing: 0.5px;
-  padding: 0 0 10px; border-bottom: 1px solid var(--border);
-}
-.keys-table td {
-  padding: 11px 0; font-size: 12.5px; color: var(--text2);
-  border-bottom: 1px solid var(--border);
-  vertical-align: middle;
-}
-.keys-table tr:last-child td { border-bottom: none; }
-.key-code {
-  font-family: 'SF Mono', monospace; font-size: 11.5px;
-  color: #8b96f8; letter-spacing: 0.5px;
-}
-.badge {
-  display: inline-block; padding: 2px 8px;
-  border-radius: 20px; font-size: 10.5px; font-weight: 500;
-}
-.badge-active { background: var(--green-bg); color: #4ade80; }
-.badge-expired { background: var(--red-bg); color: #f87171; }
-
-.modal-bg {
-  display: none; position: fixed; inset: 0;
-  background: rgba(0,0,0,0.7); backdrop-filter: blur(4px);
-  z-index: 1000; align-items: center; justify-content: center; padding: 24px;
-}
-.modal-bg.show { display: flex; }
-
-.modal {
-  background: var(--surface); border: 1px solid var(--border2);
-  border-radius: var(--radius-lg); padding: 28px;
-  max-width: 420px; width: 100%; position: relative;
-}
-
-.modal-close {
-  position: absolute; top: 16px; right: 18px;
-  background: none; border: none; color: var(--text2);
-  font-size: 18px; cursor: pointer; line-height: 1; padding: 4px;
-}
-.modal-close:hover { color: var(--text); }
-
-.modal-icon {
-  width: 44px; height: 44px; border-radius: 10px;
-  background: var(--green-bg); display: flex;
-  align-items: center; justify-content: center;
-  font-size: 20px; margin-bottom: 16px;
-}
-
-.modal-title { font-size: 16px; font-weight: 600; margin-bottom: 6px; }
-.modal-sub { font-size: 13px; color: var(--text2); margin-bottom: 20px; }
-.modal-steps { list-style: none; margin-bottom: 20px; }
-
-.modal-step {
-  display: flex; gap: 12px; padding: 10px 0;
-  border-bottom: 1px solid var(--border);
-  font-size: 13px; color: var(--text2); line-height: 1.5;
-}
-.modal-step:last-child { border-bottom: none; }
-.modal-step-num {
-  width: 20px; height: 20px; border-radius: 50%;
-  background: var(--accent-bg); color: #8b96f8;
-  font-size: 10px; font-weight: 600;
-  display: flex; align-items: center; justify-content: center;
-  flex-shrink: 0; margin-top: 2px;
-}
-
-.divider { height: 1px; background: var(--border); margin: 20px 0; }
-
-.spinner {
-  width: 14px; height: 14px;
-  border: 2px solid rgba(255,255,255,0.2);
-  border-top-color: #fff;
-  border-radius: 50%;
-  animation: spin 0.7s linear infinite;
-  display: inline-block; vertical-align: middle;
-}
-@keyframes spin { to { transform: rotate(360deg); } }
-
-.footer { text-align: center; margin-top: 48px; font-size: 11px; color: var(--text3); }
-
-.tab-content { display: none; }
-.tab-content.active { display: block; }
-
-.admin-header {
-  display: flex; align-items: center; justify-content: space-between;
-  margin-bottom: 20px;
-}
-.admin-header-left { display: flex; align-items: center; gap: 10px; }
-.admin-avatar {
-  width: 32px; height: 32px; border-radius: 50%;
-  background: var(--accent); display: flex;
-  align-items: center; justify-content: center;
-  font-size: 13px; font-weight: 600; color: #fff;
-}
-.admin-name { font-size: 13px; font-weight: 500; }
-.admin-role { font-size: 11px; color: var(--text3); }
-.logout-btn {
-  background: none; border: 1px solid var(--border2);
-  color: var(--text2); padding: 6px 12px;
-  border-radius: 7px; font-size: 12px; font-family: inherit;
-  cursor: pointer; transition: all 0.15s;
-}
-.logout-btn:hover { color: var(--text); border-color: var(--border); }
-
-.stats-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 20px; }
-.stat-box {
-  background: var(--surface2); border: 1px solid var(--border2);
-  border-radius: var(--radius); padding: 14px; text-align: center;
-}
-.stat-num { font-size: 22px; font-weight: 600; letter-spacing: -0.5px; }
-.stat-label { font-size: 11px; color: var(--text3); margin-top: 2px; }
-
-.gen-key-box {
-  display: flex; gap: 8px; margin-bottom: 16px;
-}
-.gen-key-result {
-  background: var(--bg); border: 1px solid var(--accent-border);
-  border-radius: var(--radius); padding: 12px 14px;
-  font-family: 'SF Mono', monospace; font-size: 13px;
-  color: #8b96f8; letter-spacing: 0.5px;
-  margin-bottom: 10px; display: none; word-break: break-all;
-}
-.gen-key-result.show { display: block; }
-
-.empty-state {
-  text-align: center; padding: 32px 0;
-  font-size: 13px; color: var(--text3);
-}
+body { font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;font-size:14px;line-height:1.6;-webkit-font-smoothing:antialiased; }
+.page { max-width:660px;margin:0 auto;padding:52px 24px 80px; }
+.header { margin-bottom:40px; }
+.logo-row { display:flex;align-items:center;gap:12px;margin-bottom:6px; }
+.logo-mark { width:36px;height:36px;background:var(--accent);border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:13px;color:#fff;flex-shrink:0;cursor:pointer;user-select:none; }
+.logo-text { font-size:18px;font-weight:600;letter-spacing:-0.3px; }
+.logo-badge { background:var(--accent-bg);border:1px solid var(--accent-border);color:#8b96f8;font-size:11px;font-weight:500;padding:2px 8px;border-radius:20px; }
+.header-sub { font-size:13px;color:var(--text2);margin-left:48px; }
+.tabs { display:flex;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:4px;gap:2px;margin-bottom:20px; }
+.tab { flex:1;padding:8px 10px;border-radius:7px;border:none;background:transparent;color:var(--text2);font-family:inherit;font-size:13px;font-weight:500;cursor:pointer;transition:all 0.15s;white-space:nowrap; }
+.tab:hover { color:var(--text); }
+.tab.active { background:var(--surface2);color:var(--text);border:1px solid var(--border2); }
+.card { background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px;margin-bottom:16px; }
+.card-title { font-size:11px;font-weight:500;color:var(--text3);text-transform:uppercase;letter-spacing:0.6px;margin-bottom:16px; }
+.plan-card { background:var(--surface2);border:1px solid var(--border2);border-radius:var(--radius-lg);padding:24px;margin-bottom:16px;position:relative;overflow:hidden; }
+.plan-card::before { content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),#7c88f8); }
+.plan-header { display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:20px; }
+.plan-name { font-size:16px;font-weight:600;margin-bottom:3px; }
+.plan-period { font-size:12px;color:var(--text2); }
+.plan-price { font-size:28px;font-weight:600;letter-spacing:-1px;line-height:1;text-align:right; }
+.plan-price span { font-size:15px;font-weight:500;color:var(--text2); }
+.plan-renew { font-size:11px;color:var(--text3);margin-top:3px;text-align:right; }
+.plan-divider { height:1px;background:var(--border);margin-bottom:18px; }
+.feature-list { display:grid;grid-template-columns:1fr 1fr;gap:9px; }
+.feature-item { display:flex;align-items:center;gap:7px;font-size:12.5px;color:var(--text2); }
+.feature-dot { width:5px;height:5px;border-radius:50%;background:var(--accent);flex-shrink:0; }
+.methods { display:flex;gap:8px;margin-bottom:20px; }
+.method-btn { flex:1;border:1px solid var(--border2);background:var(--surface2);color:var(--text2);padding:10px 14px;cursor:pointer;font-family:inherit;font-size:13px;font-weight:500;border-radius:var(--radius);transition:all 0.15s;display:flex;align-items:center;justify-content:center;gap:7px; }
+.method-btn:hover { color:var(--text);background:var(--surface); }
+.method-btn.active { border-color:var(--accent-border);background:var(--accent-bg);color:#8b96f8; }
+.field { margin-bottom:14px; }
+.field label { display:block;font-size:12px;font-weight:500;color:var(--text2);margin-bottom:6px; }
+.field input { width:100%;background:var(--surface2);border:1px solid var(--border2);color:var(--text);padding:10px 13px;font-family:inherit;font-size:13px;border-radius:var(--radius);outline:none;transition:border-color 0.15s; }
+.field input:focus { border-color:var(--accent); }
+.field input::placeholder { color:var(--text3); }
+.pix-box { background:var(--surface2);border:1px solid var(--border2);border-radius:var(--radius);padding:18px;margin-bottom:14px;text-align:center; }
+.pix-label { font-size:11px;font-weight:500;color:var(--text3);text-transform:uppercase;letter-spacing:0.6px;margin-bottom:8px; }
+.pix-amount { font-size:26px;font-weight:600;letter-spacing:-0.5px;margin-bottom:10px; }
+.pix-key-display { background:var(--bg);border:1px solid var(--border);border-radius:7px;padding:9px 14px;font-size:13px;color:#8b96f8;font-weight:500;word-break:break-all;margin-bottom:10px; }
+.pix-note { font-size:12px;color:var(--text2); }
+.btn { width:100%;padding:11px 18px;border-radius:var(--radius);border:none;font-family:inherit;font-size:13px;font-weight:500;cursor:pointer;transition:all 0.15s;display:flex;align-items:center;justify-content:center;gap:7px; }
+.btn-primary { background:var(--accent);color:#fff; }
+.btn-primary:hover { background:var(--accent2); }
+.btn-primary:active { transform:scale(0.99); }
+.btn-primary:disabled { opacity:0.4;cursor:not-allowed;transform:none; }
+.btn-danger { background:rgba(239,68,68,0.15);color:#f87171;border:1px solid rgba(239,68,68,0.25); }
+.btn-danger:hover { background:rgba(239,68,68,0.25); }
+.btn-sm { width:auto;padding:6px 12px;font-size:12px; }
+.alert { padding:11px 14px;border-radius:var(--radius);font-size:12.5px;margin-top:12px;display:none;line-height:1.5; }
+.alert.show { display:block; }
+.alert-success { background:var(--green-bg);color:#4ade80;border:1px solid rgba(34,197,94,0.2); }
+.alert-error { background:var(--red-bg);color:#f87171;border:1px solid rgba(239,68,68,0.2); }
+.alert-info { background:var(--accent-bg);color:#8b96f8;border:1px solid var(--accent-border); }
+.alert-warning { background:var(--amber-bg);color:#fbbf24;border:1px solid rgba(245,158,11,0.2); }
+.notice { display:flex;gap:10px;padding:12px 14px;background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.15);border-radius:var(--radius);font-size:12.5px;color:#fbbf24;line-height:1.5; }
+.notice-icon { flex-shrink:0;margin-top:2px; }
+.contact-btns { display:flex;gap:8px;margin-bottom:14px; }
+.contact-btn { flex:1;padding:10px 14px;border-radius:var(--radius);border:1px solid var(--border2);background:var(--surface2);color:var(--text2);font-family:inherit;font-size:13px;font-weight:500;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:7px;text-decoration:none;transition:all 0.15s; }
+.contact-btn.wpp { border-color:rgba(37,211,102,0.3);color:#22c55e; }
+.contact-btn.wpp:hover { background:rgba(37,211,102,0.1); }
+.contact-btn.discord { border-color:rgba(88,101,242,0.3);color:#818cf8; }
+.contact-btn.discord:hover { background:rgba(88,101,242,0.1); }
+.script-reveal { background:var(--surface2);border:1px solid var(--border2);border-radius:var(--radius-lg);padding:20px;margin-top:16px; }
+.script-reveal-title { font-size:12px;font-weight:500;color:var(--text2);margin-bottom:14px; }
+.bookmarklet-btn { display:block;width:100%;padding:12px;background:linear-gradient(135deg,var(--accent),#7c88f8);color:#fff;text-align:center;text-decoration:none;border-radius:var(--radius);font-size:13px;font-weight:500;margin-bottom:12px;cursor:grab;transition:opacity 0.15s; }
+.bookmarklet-btn:hover { opacity:0.9; }
+.copy-row { display:flex;gap:8px;margin-bottom:12px; }
+.copy-row input { flex:1;background:var(--bg);border:1px solid var(--border);color:var(--text2);padding:8px 12px;font-family:'SF Mono',monospace;font-size:11px;border-radius:7px;outline:none; }
+.copy-row button { padding:8px 14px;background:var(--surface);border:1px solid var(--border2);color:var(--text2);font-family:inherit;font-size:12px;border-radius:7px;cursor:pointer;white-space:nowrap;transition:all 0.15s; }
+.copy-row button:hover { color:var(--text);border-color:var(--accent-border); }
+.steps { list-style:none; }
+.step-item { display:flex;gap:14px;padding:14px 0;border-bottom:1px solid var(--border); }
+.step-item:last-child { border-bottom:none;padding-bottom:0; }
+.step-num { width:24px;height:24px;border-radius:50%;background:var(--accent-bg);border:1px solid var(--accent-border);color:#8b96f8;font-size:11px;font-weight:600;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px; }
+.step-text { font-size:13px;color:var(--text2);line-height:1.6; }
+.step-text b { color:var(--text);font-weight:500; }
+.section-title { font-size:13px;font-weight:600;color:var(--text);margin-bottom:12px; }
+.features-grid { display:grid;grid-template-columns:1fr 1fr;gap:10px; }
+.feat { background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:14px; }
+.feat-icon { font-size:16px;margin-bottom:7px;display:block; }
+.feat-title { font-size:12.5px;font-weight:600;color:var(--text);margin-bottom:4px; }
+.feat-desc { font-size:11.5px;color:var(--text2);line-height:1.5; }
+.admin-gate { background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px;text-align:center; }
+.admin-lock { font-size:32px;margin-bottom:12px;display:block; }
+.admin-title { font-size:15px;font-weight:600;margin-bottom:4px; }
+.admin-sub { font-size:12px;color:var(--text2);margin-bottom:20px; }
+.keys-table { width:100%;border-collapse:collapse; }
+.keys-table th { text-align:left;font-size:11px;font-weight:500;color:var(--text3);text-transform:uppercase;letter-spacing:0.5px;padding:0 0 10px;border-bottom:1px solid var(--border); }
+.keys-table td { padding:11px 0;font-size:12.5px;color:var(--text2);border-bottom:1px solid var(--border);vertical-align:middle; }
+.keys-table tr:last-child td { border-bottom:none; }
+.key-code { font-family:'SF Mono',monospace;font-size:11px;color:#8b96f8;letter-spacing:0.3px; }
+.badge { display:inline-block;padding:2px 8px;border-radius:20px;font-size:10.5px;font-weight:500; }
+.badge-active { background:var(--green-bg);color:#4ade80; }
+.badge-expired { background:var(--red-bg);color:#f87171; }
+.modal-bg { display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);backdrop-filter:blur(4px);z-index:1000;align-items:center;justify-content:center;padding:24px; }
+.modal-bg.show { display:flex; }
+.modal { background:var(--surface);border:1px solid var(--border2);border-radius:var(--radius-lg);padding:28px;max-width:420px;width:100%;position:relative; }
+.modal-close { position:absolute;top:16px;right:18px;background:none;border:none;color:var(--text2);font-size:18px;cursor:pointer; }
+.modal-icon { width:44px;height:44px;border-radius:10px;background:var(--green-bg);display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:16px; }
+.modal-title { font-size:16px;font-weight:600;margin-bottom:6px; }
+.modal-sub { font-size:13px;color:var(--text2);margin-bottom:20px; }
+.modal-steps { list-style:none;margin-bottom:20px; }
+.modal-step { display:flex;gap:12px;padding:10px 0;border-bottom:1px solid var(--border);font-size:13px;color:var(--text2);line-height:1.5; }
+.modal-step:last-child { border-bottom:none; }
+.modal-step-num { width:20px;height:20px;border-radius:50%;background:var(--accent-bg);color:#8b96f8;font-size:10px;font-weight:600;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px; }
+.spinner { width:14px;height:14px;border:2px solid rgba(255,255,255,0.2);border-top-color:#fff;border-radius:50%;animation:spin 0.7s linear infinite;display:inline-block;vertical-align:middle; }
+@keyframes spin { to { transform:rotate(360deg); } }
+.footer { text-align:center;margin-top:48px;font-size:11px;color:var(--text3); }
+.tab-content { display:none; }
+.tab-content.active { display:block; }
+.admin-header { display:flex;align-items:center;justify-content:space-between;margin-bottom:20px; }
+.admin-header-left { display:flex;align-items:center;gap:10px; }
+.admin-avatar { width:32px;height:32px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;color:#fff; }
+.admin-name { font-size:13px;font-weight:500; }
+.admin-role { font-size:11px;color:var(--text3); }
+.logout-btn { background:none;border:1px solid var(--border2);color:var(--text2);padding:6px 12px;border-radius:7px;font-size:12px;font-family:inherit;cursor:pointer;transition:all 0.15s; }
+.logout-btn:hover { color:var(--text); }
+.stats-row { display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:20px; }
+.stat-box { background:var(--surface2);border:1px solid var(--border2);border-radius:var(--radius);padding:14px;text-align:center; }
+.stat-num { font-size:22px;font-weight:600;letter-spacing:-0.5px; }
+.stat-label { font-size:11px;color:var(--text3);margin-top:2px; }
+.gen-key-result { background:var(--bg);border:1px solid var(--accent-border);border-radius:var(--radius);padding:12px 14px;font-family:'SF Mono',monospace;font-size:13px;color:#8b96f8;letter-spacing:0.5px;margin-bottom:10px;display:none;word-break:break-all; }
+.gen-key-result.show { display:block; }
+.empty-state { text-align:center;padding:32px 0;font-size:13px;color:var(--text3); }
+.fb-status { display:flex;align-items:center;gap:7px;font-size:12px;color:var(--text3);margin-bottom:14px;padding:8px 12px;background:var(--surface2);border-radius:7px;border:1px solid var(--border); }
+.fb-dot { width:7px;height:7px;border-radius:50%;background:#fbbf24;flex-shrink:0; }
+.fb-dot.ok { background:#4ade80; }
+.fb-dot.err { background:#f87171; }
 </style>
 </head>
 <body>
-
 <div class="page">
-
   <div class="header">
     <div class="logo-row">
-      <div class="logo-mark">MV</div>
+      <div class="logo-mark" id="logo-mark">MV</div>
       <span class="logo-text">MGVZ Automation</span>
       <span class="logo-badge">v3.2</span>
     </div>
@@ -469,17 +167,10 @@ body {
 
   <!-- COMPRAR -->
   <div class="tab-content active" id="tab-comprar">
-
     <div class="plan-card">
       <div class="plan-header">
-        <div>
-          <div class="plan-name">Plano Mensal</div>
-          <div class="plan-period">Acesso completo por 30 dias</div>
-        </div>
-        <div>
-          <div class="plan-price"><span>R$</span> 50</div>
-          <div class="plan-renew">Renova mensalmente</div>
-        </div>
+        <div><div class="plan-name">Plano Mensal</div><div class="plan-period">Acesso completo por 30 dias</div></div>
+        <div><div class="plan-price"><span>R$</span> 50</div><div class="plan-renew">Renova mensalmente</div></div>
       </div>
       <div class="plan-divider"></div>
       <div class="feature-list">
@@ -498,29 +189,23 @@ body {
       <div class="card-title">Forma de pagamento</div>
       <div class="methods">
         <button class="method-btn active" onclick="selectMethod(this,'pix')">
-          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-          PIX
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>PIX
         </button>
         <button class="method-btn" onclick="selectMethod(this,'mp')">
-          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
-          Mercado Pago
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>Mercado Pago
         </button>
       </div>
 
       <div id="form-pix">
-        <div class="field">
-          <label>E-mail para receber a chave de acesso</label>
-          <input type="email" id="pix-email" placeholder="seu@email.com">
-        </div>
+        <div class="field"><label>E-mail para receber a chave de acesso</label><input type="email" id="pix-email" placeholder="seu@email.com"></div>
         <div class="pix-box">
           <div class="pix-label">Chave PIX — valor a pagar</div>
           <div class="pix-amount">R$ 50,00</div>
-          <div class="pix-key-display" id="pix-key">4745872800</div>
-          <div class="pix-note">Chave PIX: Telefone. Após o pagamento, envie o comprovante pelo WhatsApp ou Discord.</div>
+          <div class="pix-key-display">4745872800</div>
+          <div class="pix-note">Chave PIX: Telefone. Após pagar, envie o comprovante:</div>
         </div>
-
         <div class="contact-btns">
-          <a id="wpp-btn" href="#" target="_blank" class="contact-btn wpp">
+          <a id="wpp-btn" href="https://wa.me/5514981497927" target="_blank" class="contact-btn wpp">
             <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
             WhatsApp
           </a>
@@ -529,66 +214,45 @@ body {
             Discord: mgmfzz
           </a>
         </div>
-
         <button class="btn btn-primary" onclick="finishPixPayment()">
-          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
-          Já paguei — enviar comprovante
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Já paguei — enviar comprovante
         </button>
         <div id="pix-status" class="alert"></div>
       </div>
 
       <div id="form-mp" style="display:none;">
-        <div class="field">
-          <label>Seu e-mail</label>
-          <input type="email" id="mp-email" placeholder="seu@email.com">
-        </div>
+        <div class="field"><label>Seu e-mail</label><input type="email" id="mp-email" placeholder="seu@email.com"></div>
         <button class="btn btn-primary" onclick="openMercadoPago()">
-          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-          Pagar com Mercado Pago
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Pagar com Mercado Pago
         </button>
         <div id="mp-status" class="alert"></div>
       </div>
     </div>
 
     <div class="notice">
-      <div class="notice-icon">
-        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-      </div>
-      <div>Chave de acesso enviada por e-mail em até <b>5 minutos</b> após confirmação do pagamento. Atendimento Seg–Dom, 8h às 23h.</div>
+      <div class="notice-icon"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+      <div>Chave de acesso enviada por e-mail em até <b>5 minutos</b> após confirmação. Atendimento Seg–Dom, 8h às 23h.</div>
     </div>
-
   </div>
 
   <!-- ACESSO -->
   <div class="tab-content" id="tab-acesso">
     <div class="card">
       <div class="card-title">Ativar acesso</div>
-      <div class="field">
-        <label>Chave de acesso (recebida por e-mail)</label>
-        <input type="text" id="access-key" placeholder="MGVZ-XXXX-XXXX-XXXX" style="font-family:'SF Mono',monospace;letter-spacing:0.5px;">
-      </div>
-      <div class="field">
-        <label>Seu e-mail</label>
-        <input type="email" id="access-email" placeholder="seu@email.com">
-      </div>
-      <button class="btn btn-primary" onclick="validateAccess()" id="access-btn">
-        Validar e obter script
-      </button>
+      <div class="fb-status"><div class="fb-dot" id="fb-dot"></div><span id="fb-status-text">Conectando ao servidor...</span></div>
+      <div class="field"><label>Chave de acesso</label><input type="text" id="access-key" placeholder="MGVZ-XXXX-XXXX-XXXX" style="font-family:'SF Mono',monospace;letter-spacing:0.5px;"></div>
+      <div class="field"><label>Seu e-mail</label><input type="email" id="access-email" placeholder="seu@email.com"></div>
+      <button class="btn btn-primary" onclick="validateAccess()" id="access-btn">Validar e obter script</button>
       <div id="access-status" class="alert"></div>
     </div>
-
     <div class="script-reveal" id="script-area" style="display:none;">
       <div class="script-reveal-title">Seu bookmarklet — arraste para a barra de favoritos</div>
-      <a id="bookmarklet-anchor" href="#" class="bookmarklet-btn" draggable="true">
-        ⚡ MGVZ Automation — arrastar para favoritos
-      </a>
+      <a id="bookmarklet-anchor" href="#" class="bookmarklet-btn" draggable="true">⚡ MGVZ Automation — arrastar para favoritos</a>
       <div class="copy-row">
-        <input type="text" id="script-preview" readonly value="javascript:void(0)">
+        <input type="text" id="script-preview" readonly>
         <button onclick="copyBookmarklet()" id="copy-btn">Copiar</button>
       </div>
-      <div class="alert alert-info show" style="margin-top:0;">
-        Arraste o botão acima para a barra de favoritos. Depois acesse o TC Online e clique no favorito salvo para ativar o painel.
-      </div>
+      <div class="alert alert-info show" style="margin-top:0;">Arraste o botão para a barra de favoritos. Depois acesse o TC Online e clique no favorito para ativar.</div>
     </div>
   </div>
 
@@ -597,428 +261,322 @@ body {
     <div class="card">
       <div class="card-title">Guia de instalação</div>
       <ul class="steps">
-        <li class="step-item">
-          <div class="step-num">1</div>
-          <div class="step-text">Assine o plano mensal e aguarde a chave de acesso no seu e-mail.</div>
-        </li>
-        <li class="step-item">
-          <div class="step-num">2</div>
-          <div class="step-text">Vá em <b>Já tenho acesso</b>, insira a chave e o e-mail e clique em validar.</div>
-        </li>
-        <li class="step-item">
-          <div class="step-num">3</div>
-          <div class="step-text">Arraste o botão <b>MGVZ Automation</b> para a barra de favoritos do Chrome, Edge ou Firefox.</div>
-        </li>
-        <li class="step-item">
-          <div class="step-num">4</div>
-          <div class="step-text">Acesse o <b>TC Online</b> e abra a disciplina desejada.</div>
-        </li>
-        <li class="step-item">
-          <div class="step-num">5</div>
-          <div class="step-text">Clique no favorito salvo — o painel de controle aparece na tela.</div>
-        </li>
-        <li class="step-item">
-          <div class="step-num">6</div>
-          <div class="step-text">Configure disciplina, módulos e IA. Clique em <b>Iniciar</b>.</div>
-        </li>
+        <li class="step-item"><div class="step-num">1</div><div class="step-text">Assine o plano mensal e aguarde a chave de acesso no seu e-mail.</div></li>
+        <li class="step-item"><div class="step-num">2</div><div class="step-text">Vá em <b>Já tenho acesso</b>, insira a chave e o e-mail e clique em validar.</div></li>
+        <li class="step-item"><div class="step-num">3</div><div class="step-text">Arraste o botão <b>MGVZ Automation</b> para a barra de favoritos do Chrome, Edge ou Firefox.</div></li>
+        <li class="step-item"><div class="step-num">4</div><div class="step-text">Acesse o <b>TC Online</b> e abra a disciplina desejada.</div></li>
+        <li class="step-item"><div class="step-num">5</div><div class="step-text">Clique no favorito salvo — o painel de controle aparece na tela.</div></li>
+        <li class="step-item"><div class="step-num">6</div><div class="step-text">Configure disciplina, módulos e IA. Clique em <b>Iniciar</b>.</div></li>
       </ul>
     </div>
-
     <div class="section-title">Funcionalidades</div>
     <div class="features-grid">
-      <div class="feat">
-        <span class="feat-icon">🤖</span>
-        <div class="feat-title">IA dupla</div>
-        <div class="feat-desc">Groq Llama 70B gratuito + GPT-4o opcional para maior precisão</div>
-      </div>
-      <div class="feat">
-        <span class="feat-icon">🔍</span>
-        <div class="feat-title">Busca de gabarito</div>
-        <div class="feat-desc">Localiza respostas de vestibulares (ENEM, FUVEST…) em tempo real</div>
-      </div>
-      <div class="feat">
-        <span class="feat-icon">🛡️</span>
-        <div class="feat-title">Anti-detecção</div>
-        <div class="feat-desc">Erra questões propositalmente para simular comportamento humano</div>
-      </div>
-      <div class="feat">
-        <span class="feat-icon">⏸️</span>
-        <div class="feat-title">Pausa inteligente</div>
-        <div class="feat-desc">Para e avisa sonoramente ao errar, para correção manual</div>
-      </div>
-      <div class="feat">
-        <span class="feat-icon">📝</span>
-        <div class="feat-title">Dissertativas</div>
-        <div class="feat-desc">Preenche questões abertas automaticamente</div>
-      </div>
-      <div class="feat">
-        <span class="feat-icon">⚡</span>
-        <div class="feat-title">Multi-módulo</div>
-        <div class="feat-desc">Processa vários módulos em sequência sem intervenção</div>
-      </div>
+      <div class="feat"><span class="feat-icon">🤖</span><div class="feat-title">IA dupla</div><div class="feat-desc">Groq Llama 70B gratuito + GPT-4o opcional para maior precisão</div></div>
+      <div class="feat"><span class="feat-icon">🔍</span><div class="feat-title">Busca de gabarito</div><div class="feat-desc">Localiza respostas de vestibulares (ENEM, FUVEST…) em tempo real</div></div>
+      <div class="feat"><span class="feat-icon">🛡️</span><div class="feat-title">Anti-detecção</div><div class="feat-desc">Erra questões propositalmente para simular comportamento humano</div></div>
+      <div class="feat"><span class="feat-icon">⏸️</span><div class="feat-title">Pausa inteligente</div><div class="feat-desc">Para e avisa sonoramente ao errar, para correção manual</div></div>
+      <div class="feat"><span class="feat-icon">📝</span><div class="feat-title">Dissertativas</div><div class="feat-desc">Preenche questões abertas automaticamente</div></div>
+      <div class="feat"><span class="feat-icon">⚡</span><div class="feat-title">Multi-módulo</div><div class="feat-desc">Processa vários módulos em sequência sem intervenção</div></div>
     </div>
   </div>
 
   <!-- ADMIN -->
   <div class="tab-content" id="tab-admin">
-
-    <!-- Gate de login -->
     <div id="admin-login-gate">
       <div class="admin-gate">
         <span class="admin-lock">🔐</span>
         <div class="admin-title">Área Administrativa</div>
         <div class="admin-sub">Acesso restrito ao administrador</div>
-        <div class="field" style="text-align:left">
-          <label>E-mail</label>
-          <input type="email" id="adm-email" placeholder="admin@email.com">
-        </div>
-        <div class="field" style="text-align:left">
-          <label>Senha</label>
-          <input type="password" id="adm-senha" placeholder="••••••••" onkeydown="if(event.key==='Enter')loginAdmin()">
-        </div>
+        <div class="field" style="text-align:left"><label>E-mail</label><input type="email" id="adm-email" placeholder="admin@email.com"></div>
+        <div class="field" style="text-align:left"><label>Senha</label><input type="password" id="adm-senha" placeholder="••••••••" onkeydown="if(event.key==='Enter')loginAdmin()"></div>
         <button class="btn btn-primary" onclick="loginAdmin()" id="adm-login-btn">Entrar</button>
         <div id="adm-login-status" class="alert"></div>
       </div>
     </div>
 
-    <!-- Painel admin -->
     <div id="admin-panel" style="display:none;">
-
       <div class="admin-header">
         <div class="admin-header-left">
           <div class="admin-avatar">M</div>
-          <div>
-            <div class="admin-name">Miguel</div>
-            <div class="admin-role">Administrador</div>
-          </div>
+          <div><div class="admin-name">Miguel</div><div class="admin-role">Administrador</div></div>
         </div>
         <button class="logout-btn" onclick="logoutAdmin()">Sair</button>
       </div>
-
-      <div class="stats-row" id="admin-stats"></div>
-
+      <div class="stats-row" id="admin-stats">
+        <div class="stat-box"><div class="stat-num">—</div><div class="stat-label">Total</div></div>
+        <div class="stat-box"><div class="stat-num">—</div><div class="stat-label">Ativas</div></div>
+        <div class="stat-box"><div class="stat-num">—</div><div class="stat-label">Expiradas</div></div>
+      </div>
       <div class="card">
-        <div class="card-title">Gerar nova chave</div>
-        <div class="gen-key-box">
-          <button class="btn btn-primary" onclick="adminGerarChave()" style="flex:1;">
-            ✨ Gerar chave (30 dias)
-          </button>
-        </div>
+        <div class="card-title">Gerar nova chave (30 dias)</div>
+        <button class="btn btn-primary" onclick="adminGerarChave()" style="margin-bottom:12px;" id="gen-btn">✨ Gerar chave</button>
         <div class="gen-key-result" id="gen-key-result"></div>
         <div class="copy-row" id="gen-key-copy" style="display:none;">
           <input type="text" id="gen-key-input" readonly>
           <button onclick="copiarChaveGerada()">Copiar</button>
         </div>
+        <div id="gen-key-status" class="alert"></div>
       </div>
-
       <div class="card">
-        <div class="card-title">Chaves ativas</div>
-        <div id="keys-list"></div>
+        <div class="card-title">Chaves cadastradas</div>
+        <div id="keys-list"><div class="empty-state">Carregando...</div></div>
       </div>
-
     </div>
   </div>
 
   <div class="footer">MGVZ Automation v3.2 &nbsp;·&nbsp; TC Online &nbsp;·&nbsp; Uso sob sua responsabilidade</div>
-
 </div>
 
-<!-- MODAL PIX -->
+<!-- MODAL -->
 <div class="modal-bg" id="instruction-modal">
   <div class="modal">
     <button class="modal-close" onclick="closeModal()">✕</button>
     <div class="modal-icon">✅</div>
     <div class="modal-title">Pagamento registrado</div>
-    <div class="modal-sub">Sua solicitação foi recebida. Acompanhe os próximos passos:</div>
+    <div class="modal-sub">Sua solicitação foi recebida. Próximos passos:</div>
     <ul class="modal-steps">
-      <li class="modal-step">
-        <div class="modal-step-num">1</div>
-        <div>A chave de acesso será enviada ao seu e-mail em até <b style="color:var(--text)">5 minutos</b>.</div>
-      </li>
-      <li class="modal-step">
-        <div class="modal-step-num">2</div>
-        <div>Se não receber, envie o comprovante via WhatsApp <b style="color:var(--text)">(+55 14 98149-7927)</b> ou Discord <b style="color:var(--text)">mgmfzz</b>.</div>
-      </li>
-      <li class="modal-step">
-        <div class="modal-step-num">3</div>
-        <div>Com a chave em mãos, vá em <b style="color:var(--text)">Já tenho acesso</b> para ativar.</div>
-      </li>
+      <li class="modal-step"><div class="modal-step-num">1</div><div>Chave enviada ao seu e-mail em até <b style="color:var(--text)">5 minutos</b>.</div></li>
+      <li class="modal-step"><div class="modal-step-num">2</div><div>Sem resposta? Mande o comprovante via <b style="color:var(--text)">WhatsApp (+55 14 98149-7927)</b> ou <b style="color:var(--text)">Discord mgmfzz</b>.</div></li>
+      <li class="modal-step"><div class="modal-step-num">3</div><div>Com a chave, vá em <b style="color:var(--text)">Já tenho acesso</b> para ativar.</div></li>
     </ul>
-    <button class="btn btn-primary" onclick="closeModal(); switchTab('acesso')">Ir para ativação</button>
+    <button class="btn btn-primary" onclick="closeModal();switchTab('acesso')">Ir para ativação</button>
   </div>
 </div>
 
-<script>
-const CONFIG = {
-  PIX_KEY:      '4745872800',
-  PRICE_LABEL:  'R$ 50,00',
-  PRICE_AMOUNT: 50.00,
-  PLAN_DAYS:    30,
-  WHATSAPP:     '5514981497927',
-  DISCORD:      'mgmfzz',
-  MP_LINK:      'https://mpago.la/SEU_LINK_AQUI',
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-app.js";
+import { getFirestore, doc, getDoc, setDoc, deleteDoc, collection, getDocs } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDV9gD1RptvdhRCdyIYugO291NJI_PSygM",
+  authDomain: "site-plurall.firebaseapp.com",
+  databaseURL: "https://site-plurall-default-rtdb.firebaseio.com",
+  projectId: "site-plurall",
+  storageBucket: "site-plurall.firebasestorage.app",
+  messagingSenderId: "448591297872",
+  appId: "1:448591297872:web:df38a2524fc447c4024055"
 };
 
-const ADMIN_CREDS = {
-  email: 'miguel.gmelo.f@gmail.com',
-  senha: '31072605'
-};
+const app = initializeApp(firebaseConfig);
+const db  = getFirestore(app);
 
-// Script do bookmarklet (mantido igual ao original)
-const MGVZ_SCRIPT = `(async function(){'use strict';const GROQ_API_KEY='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';const GROQ_TEXT='llama-3.3-70b-versatile';const GROQ_VISION='llama-3.2-11b-vision-preview';const GROQ_URL='https://api.groq.com/openai/v1/chat/completions';const OPENAI_URL='https://api.openai.com/v1/chat/completions';const OPENAI_TEXT_MODEL='gpt-4o';const OPENAI_VIS_MODEL='gpt-4o';let state={running:false,paused:false,subject:'',modRange:{s:0,e:0},curMod:0,doneEx:0,doneMod:0,totalMod:0,startT:null,forcedErrors:0,errorsToMake:0,batchSize:10,webSearchEnabled:true,searchCount:0,retries:0,correctStreak:0,pauseOnError:true,aiProvider:'groq',openaiKey:''};let shouldStop=false;function log(m){console.log('%c[MGVZ] '+m,'color:#6366f1;font-weight:bold')}async function wait(ms){const t=Date.now();while(Date.now()-t<ms){if(shouldStop)throw new Error('STOP');while(state.paused&&!shouldStop)await new Promise(r=>setTimeout(r,50));await new Promise(r=>setTimeout(r,30))}}createUI();log('MGVZ v3.2 carregado!');})();`;
+// Status de conexão
+document.getElementById('fb-dot').classList.add('ok');
+document.getElementById('fb-status-text').textContent = 'Servidor online ✓';
 
-let selectedMethod = 'pix';
+const ADMIN = { email: 'miguel.gmelo.f@gmail.com', senha: '31072605' };
+const MGVZ_SCRIPT = `(async function(){'use strict';const GROQ_API_KEY='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';const GROQ_TEXT='llama-3.3-70b-versatile';const GROQ_URL='https://api.groq.com/openai/v1/chat/completions';let state={running:false,paused:false};let shouldStop=false;function log(m){console.log('%c[MGVZ] '+m,'color:#6366f1;font-weight:bold')}createUI();log('MGVZ v3.2 carregado!');})();`;
+
 let bookmarkletCode = '';
 let adminLogado = false;
 
-// Atualiza link WhatsApp dinamicamente
-function updateWppLink(email) {
-  const msg = encodeURIComponent(`Olá! Paguei o plano mensal (${CONFIG.PRICE_LABEL}) do MGVZ.\n\nE-mail: ${email}\n\nSegue o comprovante:`);
-  document.getElementById('wpp-btn').href = `https://wa.me/${CONFIG.WHATSAPP}?text=${msg}`;
-}
-updateWppLink('');
-
-function switchTab(id) {
-  const tabNames = ['comprar','acesso','como-usar','admin'];
-  document.querySelectorAll('.tab').forEach((b, i) => {
-    b.classList.toggle('active', tabNames[i] === id);
+// ---- TABS ----
+window.switchTab = id => {
+  ['comprar','acesso','como-usar','admin'].forEach((n,i) => {
+    document.querySelectorAll('.tab')[i].classList.toggle('active', n===id);
   });
   document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-  document.getElementById('tab-' + id).classList.add('active');
-  if (id === 'admin') renderAdminPanel();
-}
+  document.getElementById('tab-'+id).classList.add('active');
+  if (id==='admin' && adminLogado) renderAdminPanel();
+};
 
-function selectMethod(el, method) {
+window.selectMethod = (el, m) => {
   document.querySelectorAll('.method-btn').forEach(b => b.classList.remove('active'));
   el.classList.add('active');
-  selectedMethod = method;
-  document.getElementById('form-pix').style.display = method === 'pix' ? 'block' : 'none';
-  document.getElementById('form-mp').style.display  = method === 'mp'  ? 'block' : 'none';
-}
+  document.getElementById('form-pix').style.display = m==='pix' ? 'block':'none';
+  document.getElementById('form-mp').style.display  = m==='mp'  ? 'block':'none';
+};
 
-function finishPixPayment() {
+window.finishPixPayment = () => {
   const email = document.getElementById('pix-email').value.trim();
-  if (!email || !email.includes('@')) { showAlert('pix-status','error','Insira um e-mail válido.'); return; }
-  updateWppLink(email);
-  const intents = JSON.parse(localStorage.getItem('mgvz_intents') || '[]');
-  intents.push({ email, valor: CONFIG.PRICE_AMOUNT, timestamp: Date.now() });
-  localStorage.setItem('mgvz_intents', JSON.stringify(intents));
-  const msg = encodeURIComponent(`Olá! Paguei o plano mensal (${CONFIG.PRICE_LABEL}) do MGVZ.\n\nE-mail: ${email}\n\nSegue o comprovante:`);
-  window.open(`https://wa.me/${CONFIG.WHATSAPP}?text=${msg}`, '_blank');
+  if (!email||!email.includes('@')) { showAlert('pix-status','error','Insira um e-mail válido.'); return; }
+  const msg = encodeURIComponent(`Olá! Paguei o plano MGVZ (R$50).\nE-mail: ${email}\nSegue o comprovante:`);
+  window.open(`https://wa.me/5514981497927?text=${msg}`,'_blank');
   document.getElementById('instruction-modal').classList.add('show');
-}
+};
 
-function openMercadoPago() {
+window.openMercadoPago = () => {
   const email = document.getElementById('mp-email').value.trim();
-  if (!email || !email.includes('@')) { showAlert('mp-status','error','Insira seu e-mail.'); return; }
-  window.open(CONFIG.MP_LINK + `?email=${encodeURIComponent(email)}`, '_blank');
-  showAlert('mp-status','info','Finalize o pagamento no Mercado Pago. Você receberá a chave por e-mail após confirmação.');
-}
+  if (!email||!email.includes('@')) { showAlert('mp-status','error','Insira seu e-mail.'); return; }
+  showAlert('mp-status','info','Finalize o pagamento. Você receberá a chave por e-mail após confirmação.');
+};
 
-function validateAccess() {
+// ---- VALIDAÇÃO FIREBASE ----
+window.validateAccess = async () => {
   const key   = document.getElementById('access-key').value.trim().toUpperCase();
   const email = document.getElementById('access-email').value.trim().toLowerCase();
-  if (!key || !email) { showAlert('access-status','error','Preencha a chave e o e-mail.'); return; }
-  const btn = document.getElementById('access-btn');
-  btn.innerHTML = '<span class="spinner"></span> Validando...';
-  btn.disabled = true;
-  setTimeout(() => {
-    btn.innerHTML = 'Validar e obter script';
-    btn.disabled = false;
-    const localKeys = JSON.parse(localStorage.getItem('mgvz_keys') || '{}');
-    const data = localKeys[key];
-    if (!data) { showAlert('access-status','error','Chave inválida. Verifique o e-mail recebido ou entre em contato com o suporte.'); return; }
-    if (data.expiry && data.expiry < Date.now()) {
-      const exp = new Date(data.expiry).toLocaleDateString('pt-BR');
-      showAlert('access-status','warning',`Acesso expirado em ${exp}. Renove por ${CONFIG.PRICE_LABEL} para continuar.`);
-      return;
-    }
-    const uses = JSON.parse(localStorage.getItem('mgvz_uses') || '{}');
-    uses[key] = { email, lastUse: Date.now() };
-    localStorage.setItem('mgvz_uses', JSON.stringify(uses));
-    let diasInfo = '';
-    if (data.expiry) {
-      const dias = Math.ceil((data.expiry - Date.now()) / 86400000);
-      diasInfo = ` — ${dias} dia(s) restante(s)`;
-    }
-    showAlert('access-status','success',`Acesso ativo${diasInfo}. Arraste o botão abaixo para a barra de favoritos.`);
-    generateBookmarklet(email, key);
-    document.getElementById('script-area').style.display = 'block';
-  }, 1100);
-}
+  if (!key||!email) { showAlert('access-status','error','Preencha a chave e o e-mail.'); return; }
 
-function generateBookmarklet(email, key) {
-  const code = `javascript:(function(){var k='${key}',u=JSON.parse(localStorage.getItem('mgvz_uses')||'{}');if(!u[k]){alert('MGVZ: Chave não autenticada.');return;}if(document.getElementById('mgvz-tools-ui')){alert('MGVZ já ativo!');return;}${MGVZ_SCRIPT}})();`;
+  const btn = document.getElementById('access-btn');
+  btn.innerHTML = '<span class="spinner"></span> Validando no servidor...';
+  btn.disabled = true;
+
+  try {
+    const snap = await getDoc(doc(db,'chaves',key));
+    if (!snap.exists()) {
+      showAlert('access-status','error','Chave inválida. Verifique ou entre em contato com o suporte.');
+    } else {
+      const data = snap.data();
+      if (data.expiry && data.expiry < Date.now()) {
+        showAlert('access-status','warning',`Acesso expirado em ${new Date(data.expiry).toLocaleDateString('pt-BR')}. Renove por R$50.`);
+      } else {
+        await setDoc(doc(db,'chaves',key), {...data, lastEmail:email, lastUse:Date.now()}, {merge:true});
+        const dias = data.expiry ? Math.ceil((data.expiry-Date.now())/86400000) : '∞';
+        showAlert('access-status','success',`✓ Acesso válido — ${dias} dia(s) restante(s). Arraste o botão abaixo para os favoritos.`);
+        gerarBookmarklet(email, key);
+        document.getElementById('script-area').style.display = 'block';
+      }
+    }
+  } catch(e) {
+    showAlert('access-status','error','Erro de conexão. Verifique sua internet e tente novamente.');
+    console.error(e);
+  }
+  btn.innerHTML = 'Validar e obter script';
+  btn.disabled = false;
+};
+
+function gerarBookmarklet(email, key) {
+  // O bookmarklet valida no Firebase antes de rodar
+  const code = `javascript:(async function(){try{const r=await fetch('https://firestore.googleapis.com/v1/projects/site-plurall/databases/(default)/documents/chaves/${key}');const d=await r.json();if(!d.fields){alert('MGVZ: Chave inválida!');return;}const exp=d.fields.expiry&&d.fields.expiry.integerValue;if(exp&&parseInt(exp)<Date.now()){alert('MGVZ: Chave expirada! Renove o plano.');return;}if(document.getElementById('mgvz-ui')){alert('MGVZ já está ativo!');return;}${MGVZ_SCRIPT.replace(/`/g,'\\`')}}catch(e){alert('MGVZ: Erro ao validar. Verifique sua conexão.');}})();`;
   bookmarkletCode = code;
-  document.getElementById('script-preview').value = code.substring(0, 80) + '...';
+  document.getElementById('script-preview').value = code.substring(0,80)+'...';
   document.getElementById('bookmarklet-anchor').href = code;
 }
 
-function copyBookmarklet() {
-  if (!bookmarkletCode) return;
+window.copyBookmarklet = () => {
   navigator.clipboard.writeText(bookmarkletCode).then(() => {
     const btn = document.getElementById('copy-btn');
     btn.textContent = 'Copiado!';
-    setTimeout(() => btn.textContent = 'Copiar', 2000);
+    setTimeout(()=>btn.textContent='Copiar',2000);
   });
-}
+};
 
-// =========== ADMIN ===========
-
-function loginAdmin() {
+// ---- ADMIN ----
+window.loginAdmin = () => {
   const email = document.getElementById('adm-email').value.trim().toLowerCase();
   const senha = document.getElementById('adm-senha').value;
   const btn = document.getElementById('adm-login-btn');
   btn.innerHTML = '<span class="spinner"></span> Verificando...';
   btn.disabled = true;
-  setTimeout(() => {
-    btn.innerHTML = 'Entrar';
-    btn.disabled = false;
-    if (email === ADMIN_CREDS.email && senha === ADMIN_CREDS.senha) {
+  setTimeout(()=>{
+    btn.innerHTML = 'Entrar'; btn.disabled = false;
+    if (email===ADMIN.email && senha===ADMIN.senha) {
       adminLogado = true;
-      sessionStorage.setItem('mgvz_admin', '1');
+      sessionStorage.setItem('mgvz_admin','1');
       document.getElementById('admin-login-gate').style.display = 'none';
       document.getElementById('admin-panel').style.display = 'block';
       renderAdminPanel();
     } else {
       showAlert('adm-login-status','error','E-mail ou senha incorretos.');
     }
-  }, 800);
-}
+  },800);
+};
 
-function logoutAdmin() {
+window.logoutAdmin = () => {
   adminLogado = false;
   sessionStorage.removeItem('mgvz_admin');
-  document.getElementById('admin-login-gate').style.display = 'block';
-  document.getElementById('admin-panel').style.display = 'none';
-  document.getElementById('adm-email').value = '';
-  document.getElementById('adm-senha').value = '';
+  document.getElementById('admin-login-gate').style.display='block';
+  document.getElementById('admin-panel').style.display='none';
+  document.getElementById('admin-tab').style.display='none';
   switchTab('comprar');
-  document.getElementById('admin-tab').style.display = 'none';
+};
+
+async function renderAdminPanel() {
+  document.getElementById('keys-list').innerHTML = '<div class="empty-state">Carregando...</div>';
+  try {
+    const snap = await getDocs(collection(db,'chaves'));
+    const now = Date.now();
+    const keys = [];
+    snap.forEach(d => keys.push({id:d.id,...d.data()}));
+    const ativas    = keys.filter(k=>!k.expiry||k.expiry>now).length;
+    const expiradas = keys.filter(k=>k.expiry&&k.expiry<=now).length;
+
+    document.getElementById('admin-stats').innerHTML = `
+      <div class="stat-box"><div class="stat-num">${keys.length}</div><div class="stat-label">Total</div></div>
+      <div class="stat-box"><div class="stat-num" style="color:#4ade80">${ativas}</div><div class="stat-label">Ativas</div></div>
+      <div class="stat-box"><div class="stat-num" style="color:#f87171">${expiradas}</div><div class="stat-label">Expiradas</div></div>`;
+
+    if (!keys.length) { document.getElementById('keys-list').innerHTML='<div class="empty-state">Nenhuma chave ainda.</div>'; return; }
+
+    const sorted = keys.sort((a,b)=>(b.criado||0)-(a.criado||0));
+    let html = `<table class="keys-table"><thead><tr><th>Chave</th><th>Expira</th><th>Status</th><th></th></tr></thead><tbody>`;
+    for (const k of sorted) {
+      const exp   = k.expiry ? new Date(k.expiry).toLocaleDateString('pt-BR') : '∞';
+      const ativa = !k.expiry||k.expiry>now;
+      html += `<tr>
+        <td><span class="key-code">${k.id}</span></td>
+        <td style="font-size:12px">${exp}</td>
+        <td><span class="badge ${ativa?'badge-active':'badge-expired'}">${ativa?'Ativa':'Expirada'}</span></td>
+        <td style="text-align:right"><button class="btn btn-danger btn-sm" onclick="deletarChave('${k.id}')">Excluir</button></td>
+      </tr>`;
+    }
+    html += '</tbody></table>';
+    document.getElementById('keys-list').innerHTML = html;
+  } catch(e) {
+    document.getElementById('keys-list').innerHTML='<div class="empty-state">Erro ao carregar. Verifique as regras do Firestore.</div>';
+    console.error(e);
+  }
 }
 
-function renderAdminPanel() {
-  const keys = JSON.parse(localStorage.getItem('mgvz_keys') || '{}');
-  const now = Date.now();
-  const ativas = Object.entries(keys).filter(([,v]) => !v.expiry || v.expiry > now);
-  const expiradas = Object.entries(keys).filter(([,v]) => v.expiry && v.expiry <= now);
-
-  // Stats
-  document.getElementById('admin-stats').innerHTML = `
-    <div class="stat-box">
-      <div class="stat-num">${Object.keys(keys).length}</div>
-      <div class="stat-label">Total de chaves</div>
-    </div>
-    <div class="stat-box">
-      <div class="stat-num" style="color:#4ade80">${ativas.length}</div>
-      <div class="stat-label">Ativas</div>
-    </div>
-    <div class="stat-box">
-      <div class="stat-num" style="color:#f87171">${expiradas.length}</div>
-      <div class="stat-label">Expiradas</div>
-    </div>
-  `;
-
-  // Lista de chaves
-  const container = document.getElementById('keys-list');
-  if (Object.keys(keys).length === 0) {
-    container.innerHTML = '<div class="empty-state">Nenhuma chave gerada ainda.</div>';
-    return;
-  }
-
-  let html = `<table class="keys-table">
-    <thead><tr>
-      <th>Chave</th>
-      <th>Expira</th>
-      <th>Status</th>
-      <th></th>
-    </tr></thead><tbody>`;
-
-  for (const [k, v] of Object.entries(keys).sort((a,b) => (b[1].criado||0)-(a[1].criado||0))) {
-    const exp = v.expiry ? new Date(v.expiry).toLocaleDateString('pt-BR') : '∞';
-    const ativa = !v.expiry || v.expiry > now;
-    html += `<tr>
-      <td><span class="key-code">${k}</span></td>
-      <td>${exp}</td>
-      <td><span class="badge ${ativa ? 'badge-active' : 'badge-expired'}">${ativa ? 'Ativa' : 'Expirada'}</span></td>
-      <td style="text-align:right">
-        <button class="btn btn-danger btn-sm" onclick="deletarChave('${k}')">Excluir</button>
-      </td>
-    </tr>`;
-  }
-  html += '</tbody></table>';
-  container.innerHTML = html;
-}
-
-function adminGerarChave() {
+window.adminGerarChave = async () => {
   const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
-  const seg = () => Array.from({length:4}, () => chars[Math.floor(Math.random()*chars.length)]).join('');
+  const seg = ()=>Array.from({length:4},()=>chars[Math.floor(Math.random()*chars.length)]).join('');
   const key = `MGVZ-${seg()}-${seg()}-${seg()}`;
-  const expiry = Date.now() + 30 * 86400000;
-  const keys = JSON.parse(localStorage.getItem('mgvz_keys') || '{}');
-  keys[key] = { expiry, criado: Date.now() };
-  localStorage.setItem('mgvz_keys', JSON.stringify(keys));
-
-  const resultEl = document.getElementById('gen-key-result');
-  resultEl.textContent = key;
-  resultEl.classList.add('show');
-
-  const copyBox = document.getElementById('gen-key-copy');
-  copyBox.style.display = 'flex';
-  document.getElementById('gen-key-input').value = key;
-
-  renderAdminPanel();
-}
-
-function copiarChaveGerada() {
-  const key = document.getElementById('gen-key-input').value;
-  navigator.clipboard.writeText(key).then(() => {
-    const btn = document.querySelector('#gen-key-copy button');
-    btn.textContent = 'Copiado!';
-    setTimeout(() => btn.textContent = 'Copiar', 2000);
-  });
-}
-
-function deletarChave(key) {
-  if (!confirm(`Excluir a chave ${key}?\n\nEsta ação não pode ser desfeita.`)) return;
-  const keys = JSON.parse(localStorage.getItem('mgvz_keys') || '{}');
-  delete keys[key];
-  localStorage.setItem('mgvz_keys', JSON.stringify(keys));
-  renderAdminPanel();
-}
-
-// Verifica sessão admin ao carregar
-if (sessionStorage.getItem('mgvz_admin') === '1') {
-  adminLogado = true;
-  document.getElementById('admin-tab').style.display = '';
-  document.getElementById('admin-login-gate').style.display = 'none';
-  document.getElementById('admin-panel').style.display = 'block';
-}
-
-// Atalho oculto para abrir aba admin (triplo clique no logo)
-let logoClicks = 0;
-document.querySelector('.logo-mark').addEventListener('click', () => {
-  logoClicks++;
-  if (logoClicks >= 3) {
-    logoClicks = 0;
-    document.getElementById('admin-tab').style.display = '';
-    switchTab('admin');
+  const btn = document.getElementById('gen-btn');
+  btn.innerHTML = '<span class="spinner"></span> Salvando...';
+  btn.disabled = true;
+  try {
+    await setDoc(doc(db,'chaves',key),{expiry:Date.now()+30*86400000, criado:Date.now(), ativo:true});
+    const el = document.getElementById('gen-key-result');
+    el.textContent = key; el.classList.add('show');
+    document.getElementById('gen-key-copy').style.display='flex';
+    document.getElementById('gen-key-input').value = key;
+    showAlert('gen-key-status','success','Chave salva no Firebase! Válida por 30 dias.');
+    renderAdminPanel();
+  } catch(e) {
+    showAlert('gen-key-status','error','Erro ao salvar. Verifique as regras do Firestore.');
+    console.error(e);
   }
-  setTimeout(() => logoClicks = 0, 1500);
-});
+  btn.innerHTML = '✨ Gerar chave'; btn.disabled = false;
+};
 
-function showAlert(id, type, msg) {
-  const el = document.getElementById(id);
-  if (!el) return;
-  const map = { success:'alert-success', error:'alert-error', info:'alert-info', warning:'alert-warning' };
-  el.className = 'alert ' + (map[type] || 'alert-info') + ' show';
-  el.textContent = msg;
+window.copiarChaveGerada = () => {
+  navigator.clipboard.writeText(document.getElementById('gen-key-input').value).then(()=>{
+    const btn = document.querySelector('#gen-key-copy button');
+    btn.textContent='Copiado!'; setTimeout(()=>btn.textContent='Copiar',2000);
+  });
+};
+
+window.deletarChave = async key => {
+  if (!confirm(`Excluir ${key}?\nEsta ação não pode ser desfeita.`)) return;
+  try { await deleteDoc(doc(db,'chaves',key)); renderAdminPanel(); }
+  catch(e) { alert('Erro ao excluir.'); console.error(e); }
+};
+
+// Sessão admin persistente
+if (sessionStorage.getItem('mgvz_admin')==='1') {
+  adminLogado = true;
+  document.getElementById('admin-tab').style.display='';
+  document.getElementById('admin-login-gate').style.display='none';
+  document.getElementById('admin-panel').style.display='block';
+  renderAdminPanel();
 }
 
-function closeModal() { document.getElementById('instruction-modal').classList.remove('show'); }
-document.getElementById('instruction-modal').addEventListener('click', e => {
-  if (e.target.id === 'instruction-modal') closeModal();
+// 3 cliques no logo abre admin
+let lc=0;
+document.getElementById('logo-mark').addEventListener('click',()=>{
+  if(++lc>=3){ lc=0; document.getElementById('admin-tab').style.display=''; switchTab('admin'); }
+  setTimeout(()=>lc=0,1500);
 });
+
+// Helpers
+function showAlert(id,type,msg){
+  const el=document.getElementById(id); if(!el)return;
+  const m={success:'alert-success',error:'alert-error',info:'alert-info',warning:'alert-warning'};
+  el.className='alert '+(m[type]||'alert-info')+' show'; el.textContent=msg;
+}
+window.closeModal = ()=>document.getElementById('instruction-modal').classList.remove('show');
+document.getElementById('instruction-modal').addEventListener('click',e=>{if(e.target.id==='instruction-modal')window.closeModal();});
 </script>
 </body>
 </html>
